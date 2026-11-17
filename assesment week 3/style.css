@@ -1,0 +1,502 @@
+/* =========================================
+   1. CSS Variables & Theme Setup
+   ========================================= */
+:root {
+    --primary-color: #0f4c81;
+    --primary-dark: #093256;
+    --secondary-color: #00a896;
+    --accent-color: #f59e0b;
+    --bg-light: #f4f7fa;
+    --surface-white: #ffffff;
+    --text-dark: #1e293b;
+    --text-muted: #64748b;
+    --border-color: #e2e8f0;
+
+    /* Status & Performance Colors */
+    --success-bg: #dcfce7;
+    --success-text: #166534;
+    --info-bg: #dbeafe;
+    --info-text: #1e40af;
+    --warning-bg: #fef3c7;
+    --warning-text: #92400e;
+    --danger-bg: #fee2e2;
+    --danger-text: #991b1b;
+
+    /* Layout & Polish */
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 14px;
+    --shadow-sm: 0 2px 6px rgba(15, 23, 42, 0.06);
+    --shadow-md: 0 6px 18px rgba(15, 23, 42, 0.08);
+    --transition: all 0.25s ease;
+    --font-heading: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    --font-body: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* =========================================
+   2. Reset & Base Typography
+   ========================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+h1, h2, h3, h4 {
+    font-family: var(--font-heading);
+    color: var(--text-dark);
+    line-height: 1.25;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: var(--transition);
+}
+
+ul {
+    list-style: none;
+}
+
+.container {
+    width: 92%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.main-content {
+    flex: 1;
+    padding: 2.5rem 0;
+}
+
+.section-spacing {
+    margin-top: 2.5rem;
+}
+
+.section-title {
+    margin-bottom: 1.25rem;
+    font-size: 1.65rem;
+}
+
+.section-subtitle {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 1.25rem;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* =========================================
+   3. Header & Navigation
+   ========================================= */
+.site-header {
+    background-color: var(--surface-white);
+    box-shadow: var(--shadow-sm);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+}
+
+.logo {
+    font-size: 1.45rem;
+    font-weight: 800;
+    color: var(--primary-color);
+    letter-spacing: -0.5px;
+}
+
+.logo span {
+    color: var(--secondary-color);
+}
+
+.main-nav ul {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.main-nav a {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--text-dark);
+    padding: 0.5rem 0.85rem;
+    border-radius: var(--radius-sm);
+}
+
+.main-nav a:hover {
+    background-color: var(--bg-light);
+    color: var(--primary-color);
+}
+
+.main-nav a.active {
+    background-color: var(--primary-color);
+    color: var(--surface-white);
+}
+
+/* Mobile Hamburger Button */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.4rem;
+}
+
+.hamburger span {
+    width: 26px;
+    height: 3px;
+    background-color: var(--primary-color);
+    border-radius: 3px;
+    transition: var(--transition);
+}
+
+/* =========================================
+   4. Hero & Page Banners
+   ========================================= */
+.hero {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    color: var(--surface-white);
+    padding: 4rem 0;
+    text-align: center;
+}
+
+.hero h1 {
+    color: var(--surface-white);
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.hero p {
+    max-width: 680px;
+    margin: 0 auto 1.75rem;
+    font-size: 1.1rem;
+    opacity: 0.92;
+}
+
+.page-banner {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: var(--surface-white);
+    padding: 3rem 0;
+    text-align: center;
+}
+
+.page-banner h1 {
+    color: var(--surface-white);
+    font-size: 2.15rem;
+    margin-bottom: 0.5rem;
+}
+
+.page-banner p {
+    max-width: 620px;
+    margin: 0 auto;
+    opacity: 0.95;
+}
+
+/* =========================================
+   5. Buttons & Feedback Alerts
+   ========================================= */
+.btn {
+    display: inline-block;
+    padding: 0.7rem 1.4rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border-radius: var(--radius-sm);
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    transition: var(--transition);
+}
+
+.btn-primary {
+    background-color: var(--secondary-color);
+    color: var(--surface-white);
+}
+
+.btn-primary:hover {
+    background-color: #00897b;
+    transform: translateY(-1px);
+}
+
+.btn-block {
+    width: 100%;
+}
+
+.btn-sm {
+    padding: 0.35rem 0.65rem;
+    font-size: 0.82rem;
+    border-radius: 4px;
+}
+
+.btn-edit {
+    background-color: var(--info-bg);
+    color: var(--info-text);
+}
+
+.btn-edit:hover {
+    background-color: #bfdbfe;
+}
+
+.btn-delete {
+    background-color: var(--danger-bg);
+    color: var(--danger-text);
+}
+
+.btn-delete:hover {
+    background-color: #fecaca;
+}
+
+.feedback-message {
+    padding: 0.85rem 1rem;
+    border-radius: var(--radius-sm);
+    margin-bottom: 1.25rem;
+    font-size: 0.92rem;
+    font-weight: 600;
+    display: none;
+}
+
+.feedback-message.error {
+    display: block;
+    background-color: var(--danger-bg);
+    color: var(--danger-text);
+    border-left: 4px solid var(--danger-text);
+}
+
+.feedback-message.success {
+    display: block;
+    background-color: var(--success-bg);
+    color: var(--success-text);
+    border-left: 4px solid var(--success-text);
+}
+
+/* =========================================
+   6. Cards & Dashboard Statistics
+   ========================================= */
+.card {
+    background-color: var(--surface-white);
+    border-radius: var(--radius-md);
+    padding: 1.75rem;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-color);
+    transition: var(--transition);
+}
+
+.dashboard-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    background-color: var(--surface-white);
+    padding: 1.5rem;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-color);
+    transition: var(--transition);
+}
+
+.stat-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+}
+
+.stat-card h3 {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+}
+
+.stat-number {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 0.25rem;
+}
+
+.stat-desc {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.text-primary { color: var(--primary-color); }
+.text-success { color: var(--success-text); }
+.text-danger { color: var(--danger-text); }
+
+/* =========================================
+   7. Management Grid & Forms
+   ========================================= */
+.management-grid {
+    display: grid;
+    grid-template-columns: 360px 1fr;
+    gap: 1.75rem;
+    align-items: start;
+}
+
+.form-group {
+    margin-bottom: 1.1rem;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.85rem;
+}
+
+label {
+    display: block;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 0.4rem;
+    color: var(--text-dark);
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 0.65rem 0.85rem;
+    border: 1px solid #cbd5e1;
+    border-radius: var(--radius-sm);
+    font-family: inherit;
+    font-size: 0.95rem;
+    color: var(--text-dark);
+    background-color: var(--surface-white);
+    transition: var(--transition);
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(15, 76, 129, 0.15);
+}
+
+/* =========================================
+   8. Student Records Table & Badges
+   ========================================= */
+.records-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.search-box {
+    min-width: 240px;
+}
+
+.table-responsive {
+    overflow-x: auto;
+}
+
+.records-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 0.92rem;
+}
+
+.records-table th {
+    background-color: var(--primary-color);
+    color: var(--surface-white);
+    padding: 0.85rem 0.75rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.records-table th:first-child {
+    border-top-left-radius: var(--radius-sm);
+}
+
+.records-table th:last-child {
+    border-top-right-radius: var(--radius-sm);
+}
+
+.records-table td {
+    padding: 0.85rem 0.75rem;
+    border-bottom: 1px solid var(--border-color);
+    vertical-align: middle;
+}
+
+.records-table tbody tr {
+    transition: background-color 0.2s ease;
+}
+
+.records-table tbody tr:hover {
+    background-color: #f1f5f9;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 0.4rem;
+    white-space: nowrap;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 2rem;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+/* Performance Status Badges */
+.badge {
+    display: inline-block;
+    padding: 0.28rem 0.65rem;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.badge-excellent {
+    background-color: var(--success-bg);
+    color: var(--success-text);
+}
+
+.badge-very-good {
+    background-color: #ccfbf1;
+    color: #115e59;
+}
+
+.badge-good {
+    background-color: var(--info-bg);
+    color: var(--info-text);
+}
+
+.badge-average {
+    background-color: var(--warning-bg);
+    color: var(--warning-text);
+}
